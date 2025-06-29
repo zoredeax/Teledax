@@ -24,7 +24,7 @@ class _FilesScreenState extends State<FilesScreen> {
     _paginationctr.addListener(() {
       if (_paginationctr.position.pixels ==
           _paginationctr.position.maxScrollExtent) {
-        print("fectch again");
+        print("fetch again");
         _getNext();
       }
     });
@@ -96,7 +96,7 @@ class _FilesScreenState extends State<FilesScreen> {
 
   _getNext() async {
     if (!_isnext) {
-      print("don't have data lol");
+      print("No data!");
       return;
     }
     _isnext = false;
