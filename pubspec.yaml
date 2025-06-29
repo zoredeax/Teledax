@@ -13,8 +13,8 @@ dependencies:
     sdk: flutter
   http: ^0.12.2
   # video player
-  chewie: ^0.9.10
-  video_player: ^0.10.12
+  chewie: ^1.0.0
+  video_player: ^2.0.0
   audioplayers: ^0.16.0
   # sqlite
   sqflite: ^1.2.0
