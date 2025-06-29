@@ -47,9 +47,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   get _durationText => _duration?.toString()?.split('.')?.first ?? '';
   get _positionText => _position?.toString()?.split('.')?.first ?? '';
 
-  // get _isPlayingThroughEarpiece =>
-  //     _playingRouteState == PlayingRouteState.earpiece;
-
   _PlayerWidgetState(this.url, this.mode);
 
   @override
@@ -146,7 +143,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
             ),
           ],
         ),
-        // Text('State: $_audioPlayerState')
       ],
     );
   }
@@ -158,14 +154,12 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       setState(() => _duration = duration);
 
       if (Theme.of(context).platform == TargetPlatform.android) {
-        // _audioPlayer.startHeadlessService();
         MediaNotification.showNotification(
           isPlaying: true,
           title: 'Teledax',
           imageUrl: 'https://telegra.ph/file/0cf78a69f558d747a3804.png',
-          position: _position,
-          duration: _duration,
-          rate: 1.0,
+          currentPosition: _position?.inMilliseconds ?? 0,
+          duration: _duration?.inMilliseconds ?? 0,
         );
       }
     });
@@ -217,9 +211,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     final result = await _audioPlayer.play(url, position: playPosition);
     if (result == 1) setState(() => _playerState = PlayerState.playing);
 
-    // default playback rate is 1.0
-    // this should be called after _audioPlayer.play() or _audioPlayer.resume()
-    // this can also be called everytime the user wants to change playback rate in the UI
     _audioPlayer.setPlaybackRate(playbackRate: 1.0);
 
     return result;
@@ -232,9 +223,8 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       isPlaying: false,
       title: 'Teledax',
       imageUrl: 'https://telegra.ph/file/0cf78a69f558d747a3804.png',
-      position: _position,
-      duration: _duration,
-      rate: 1.0,
+      currentPosition: _position?.inMilliseconds ?? 0,
+      duration: _duration?.inMilliseconds ?? 0,
     );
 
     return result;
