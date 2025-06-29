@@ -1,82 +1,25 @@
-# This workflow is designed to build a Flutter project on Codemagic
-# using JDK 11, and older compatible Android Gradle Plugin (AGP) and Gradle versions.
-
 workflows:
   android-build-jdk11:
     name: Android Build (JDK 11 Compatible)
-    instance_type: mac_mini_m2 # Or mac_pro_2019, etc.
+    instance_type: mac_mini_m2
 
     environment:
-      # Set the desired Flutter version
       flutter: 2.0.1
-      # Set the desired Java version for the build process
       java: 11
-      # Define environment variables for Android build tools
-      #android_sdk_root: /usr/local/share/android-sdk
-      # Add any other environment variables your project needs
 
     triggering:
-      # Automatically trigger a build on push to the main branch
-      # You can customize this to specific branches or tags
       events:
         - push
-      #branch: main # Or 'master'
 
     scripts:
-     # - name: Set Flutter version
-        # This ensures the specified Flutter version is used
-        # Codemagic will automatically install it if not present
-      #  script: |
-        #  flutter sdk use $FLUTTER_VERSION
-
-      - name: Set up Android build environment (JDK 11 compatible)
-        # This script modifies your project's Gradle configuration
-        # to use versions compatible with JDK 11.
-        script: |
-          # --- Modify gradle-wrapper.properties ---
-          # Set Gradle Wrapper to 6.7 (compatible with JDK 11 and AGP 4.1.0)
-          echo "distributionUrl=https\\://services.gradle.org/distributions/gradle-6.7-all.zip" > android/gradle/wrapper/gradle-wrapper.properties
-
-          # --- Modify project-level build.gradle (android/build.gradle) ---
-          # Set AGP to 4.1.0 and Kotlin to 1.3.50 (compatible with JDK 11)
-          # Ensure jcenter() is present if your old project expects it, but be aware of its deprecation.
-          # If you've already removed jcenter() locally, keep it removed.
-          sed -i '' 's|ext.kotlin_version = .*|ext.kotlin_version = '\''1.3.50'\''|' android/build.gradle
-          sed -i '' 's|classpath '\''com.android.tools.build:gradle:.*'\''|classpath '\''com.android.tools.build:gradle:4.1.0'\''|' android/build.gradle
-          # Add jcenter() if it's missing and your project needs it for old dependencies
-          # This is a bit fragile and depends on the exact content of your build.gradle
-          # You might need to manually ensure jcenter() is present in both buildscript and allprojects repositories
-          # Example: sed -i '' '/mavenCentral()/a\        jcenter()' android/build.gradle
-
-          # --- Modify app-level build.gradle (android/app/build.gradle) ---
-          # Set compileSdkVersion and targetSdkVersion to 30 (compatible with AGP 4.1.0)
-          # Set minSdkVersion to 16 (as per your current config)
-          sed -i '' 's|compileSdkVersion .*|compileSdkVersion 30|' android/app/build.gradle
-          sed -i '' 's|targetSdkVersion .*|targetSdkVersion 30|' android/app/build.gradle
-          sed -i '' 's|minSdkVersion .*|minSdkVersion 16|' android/app/build.gradle
-          # Ensure kotlin-stdlib-jdk7 is used if that's what your old project expects
-          sed -i '' 's|kotlin-stdlib-jdk8|kotlin-stdlib-jdk7|' android/app/build.gradle
-
-          # --- Stop any lingering Gradle daemons ---
-          ./gradlew --stop || true # Use || true to prevent script from failing if no daemon is running
 
       - name: Get Flutter dependencies
         script: |
           flutter pub get
-
-      - name: Clean Android build
-        script: |
-          cd android
-          ./gradlew clean
-          cd ..
 
       - name: Build Android AppBundle
         script: |
           flutter build appbundle --release
 
     artifacts:
-      # Define where to find the build artifacts
-      - build/app/outputs/bundle/**/*.aab
       - build/app/outputs/apk/**/*.apk
-      - /tmp/codemagic_logs/*.log # Collect build logs
-      
