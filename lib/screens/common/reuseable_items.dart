@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:Teledax/util/utils.dart';
 import 'package:android_intent/android_intent.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,7 @@ showAutoIntent({@required url, @required mimeType}) async {
     try {
       await intent.launch();
     } catch (e) {
-      print(e);
+      debugPrint(e);
     }
   } else if (Platform.isAndroid && mimeType.contains("audio")) {
     AndroidIntent intent = AndroidIntent(
@@ -36,7 +35,7 @@ showAutoIntent({@required url, @required mimeType}) async {
     try {
       await intent.launch();
     } catch (e) {
-      print(e);
+      debugPrint(e);
     }
   } else {
     await launchurl(url);
