@@ -162,7 +162,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           isPlaying: true,
           title: 'Teledax',
           imageUrl: 'https://telegra.ph/file/0cf78a69f558d747a3804.png',
-          position: _position,
+          currentPosition: _position,
           duration: _duration,
           rate: 1.0,
         );
@@ -231,7 +231,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       isPlaying: false,
       title: 'Teledax',
       imageUrl: 'https://telegra.ph/file/0cf78a69f558d747a3804.png',
-      position: _position,
+      currentPosition: _position,
       duration: _duration,
       rate: 1.0,
     );
