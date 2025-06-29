@@ -1,7 +1,6 @@
 import 'package:Teledax/player/audioPlayer.dart';
 import 'package:Teledax/screens/common/reuseable_items.dart';
 import 'package:Teledax/style/constants.dart';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -115,7 +114,6 @@ class _FIleInfoState extends State<FIleInfo> {
       "$baseurl/${data['chatid']}/${item.fileId}/thumbnail",
       fit: BoxFit.contain,
       errorBuilder: (context, error, stackTrace) {
-        print(error);
         return Image.asset(
           "images/not-found.png",
         );
