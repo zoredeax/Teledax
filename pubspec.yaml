@@ -39,7 +39,7 @@ dependencies:
     git:
       url: https://github.com/itsbohara-flutter/flutter_media_notification.git
       ref: master
-  fluttertoast: ^8.0.4
+  fluttertoast: ^7.0.4
   #vlc video player
   flutter_vlc_player:
     git:
