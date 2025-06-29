@@ -37,11 +37,14 @@ dependencies:
   # audio player notification
   flutter_media_notification:
     git:
-      url: https://github.com/bykenx/flutter_media_notification.git
+      url: https://github.com/itsbohara-flutter/flutter_media_notification.git
       ref: master
   fluttertoast: ^7.0.4
   #vlc video player
-  flutter_vlc_player: ^4.0.0
+  flutter_vlc_player:
+    git:
+      url: https://github.com/solid-software/flutter_vlc_player.git
+      ref: 3.0.7
 
 dev_dependencies:
   flutter_test:
