@@ -1,0 +1,26 @@
+workflows:
+  Teledax:
+    name: Teledax
+    instance_type: mac_mini_m2
+
+    environment:
+      flutter: 2.0.1
+      java: 11
+
+    triggering:
+      events:
+        - push
+
+    scripts:
+      - name: Get Flutter dependencies
+        script: |
+          flutter pub get
+
+      - name: Build Android App
+        script: |
+          flutter build apk --debug
+
+    artifacts:
+      - build/app/outputs/bundle/debug/**/*.aab # For debug appbundle
+      - build/app/outputs/flutter-apk/app-debug.apk # For debug apk
+      - /tmp/codemagic_logs/*.log
