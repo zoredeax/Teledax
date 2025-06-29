@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:Teledax/style/constants.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
@@ -184,7 +183,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     });
 
     _playerErrorSubscription = _audioPlayer.onPlayerError.listen((msg) {
-      print('audioPlayer error : $msg');
+      debugPrint('audioPlayer error : $msg');
       setState(() {
         _playerState = PlayerState.stopped;
         _duration = Duration(seconds: 0);
