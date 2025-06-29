@@ -23,11 +23,11 @@ workflows:
       #branch: main # Or 'master'
 
     scripts:
-      - name: Set Flutter version
+     # - name: Set Flutter version
         # This ensures the specified Flutter version is used
         # Codemagic will automatically install it if not present
-        script: |
-          flutter sdk use $FLUTTER_VERSION
+      #  script: |
+        #  flutter sdk use $FLUTTER_VERSION
 
       - name: Set up Android build environment (JDK 11 compatible)
         # This script modifies your project's Gradle configuration
