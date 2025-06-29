@@ -19,7 +19,7 @@ workflows:
 
       - name: Build Android AppBundle
         script: |
-          flutter build appbundle --debug
+          flutter build apk --debug
 
     artifacts:
       - build/app/outputs/bundle/debug/**/*.aab # For debug appbundle
