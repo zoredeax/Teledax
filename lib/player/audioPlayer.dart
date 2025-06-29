@@ -164,7 +164,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           imageUrl: 'https://telegra.ph/file/0cf78a69f558d747a3804.png',
           currentPosition: _position,
           duration: _duration,
-          rate: 1.0,
+          //rate: 1.0,
         );
       }
     });
@@ -233,7 +233,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       imageUrl: 'https://telegra.ph/file/0cf78a69f558d747a3804.png',
       currentPosition: _position,
       duration: _duration,
-      rate: 1.0,
+      //rate: 1.0,
     );
 
     return result;
