@@ -4,15 +4,15 @@
 workflows:
   android-build-jdk11:
     name: Android Build (JDK 11 Compatible)
-    instance_type: mac_mini_m1 # Or mac_pro_2019, etc.
+    instance_type: mac_mini_m2 # Or mac_pro_2019, etc.
 
     environment:
       # Set the desired Flutter version
-      flutter: 2.0.0
+      flutter: 2.0.1
       # Set the desired Java version for the build process
       java: 11
       # Define environment variables for Android build tools
-      android_sdk_root: /usr/local/share/android-sdk
+      #android_sdk_root: /usr/local/share/android-sdk
       # Add any other environment variables your project needs
 
     triggering:
@@ -20,7 +20,7 @@ workflows:
       # You can customize this to specific branches or tags
       events:
         - push
-      branch: main # Or 'master'
+      #branch: main # Or 'master'
 
     scripts:
       - name: Set Flutter version
