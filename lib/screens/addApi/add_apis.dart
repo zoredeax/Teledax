@@ -33,7 +33,7 @@ class _AddApiState extends State<AddApi> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: customAppbar("Api list", context),
+        appBar: customAppbar("API List", context),
         backgroundColor: lightColor,
         body: FutureBuilder(
           future: db.queryAllRows(),
@@ -45,11 +45,11 @@ class _AddApiState extends State<AddApi> {
               if (data.length < 1)
                 return Center(
                     child: Text(
-                  "No Api avalible !! ",
+                  "No API Available !! ",
                   style: TextStyle(fontSize: 20),
                 ));
 
-              // IF have more than 0 data
+              // If have more than 0 data
 
               return ListView.builder(
                   itemCount: data.length,
@@ -125,7 +125,7 @@ class _AddApiState extends State<AddApi> {
           },
           splashColor: SecondaryColor,
           elevation: 10,
-          label: Text("Add Api"),
+          label: Text("Add API"),
           icon: Icon(MdiIcons.plus),
         ),
       ),
