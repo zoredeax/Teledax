@@ -4,7 +4,6 @@ import 'package:Teledax/util/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:package_info/package_info.dart';
-
 import 'common/reuseable_items.dart';
 
 class Dev extends StatefulWidget {
@@ -101,7 +100,7 @@ Widget _devsinfo() {
             githubUsername: "odysseusmax",
             profileImage: "https://avatars1.githubusercontent.com/u/35767464",
             telegramUsername: "odysseusmax",
-            devtype: "Api Developer"),
+            devtype: "API Developer"),
       ],
     ),
   );
