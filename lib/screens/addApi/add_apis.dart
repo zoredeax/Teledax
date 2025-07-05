@@ -166,7 +166,7 @@ class _AddApiState extends State<AddApi> {
                 }
                 //_textvalue.replaceAll(new RegExp(r'^http://'), 'https://');
 
-                if (!RegExp(r"^(http|https)".hasMatch(_textvalue)) {
+                if (!RegExp(r"^(http|https)://".hasMatch(_textvalue)) {
                   _textvalue = "http://" + _textvalue;
                 }
                 await db.insert({DatabaseHelper.columnName: _textvalue});
