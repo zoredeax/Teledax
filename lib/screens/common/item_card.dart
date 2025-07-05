@@ -61,7 +61,7 @@ class ItemCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 100, top: 10),
                     child: Text(
-                      DateFormat('hh:mm:a - dd-MM-yy').format(item.date),
+                      DateFormat('dd-MM-yy - hh:mm:a').format(item.date),
                       style: TextStyle(
                           color: fontColor, fontWeight: FontWeight.w400),
                     ),
@@ -70,7 +70,7 @@ class ItemCard extends StatelessWidget {
               ),
             ),
             trailing: IconButton(
-                tooltip: "open in external apps",
+                tooltip: "Open in External App",
                 icon: Icon(
                   MdiIcons.openInApp,
                   color: SecondaryColor,
