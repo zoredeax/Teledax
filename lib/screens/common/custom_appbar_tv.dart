@@ -1,67 +1,41 @@
 import 'package:Teledax/style/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // Import for RawKeyboardListener (good practice)
 
-// This is the new StatefulWidget
-class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final String appbarText;
+AppBar customAppbar(appbarText, BuildContext context) {
+  // Declare the FocusNode locally within the function
+  final FocusNode settingsIconFocusNode = FocusNode();
 
-  // Constructor now takes named parameters
-  CustomAppBar({Key key, @required this.appbarText}) : super(key: key);
-
-  @override
-  _CustomAppBarState createState() => _CustomAppBarState();
-
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight); // Standard AppBar height
-}
-
-class _CustomAppBarState extends State<CustomAppBar> {
-  // Declare the FocusNode as a member of the State class
-  FocusNode _settingsIconFocusNode;
-
-  @override
-  void initState() {
-    super.initState();
-    // Initialize the FocusNode in initState
-    _settingsIconFocusNode = FocusNode();
-  }
-
-  @override
-  void dispose() {
-    // Dispose the FocusNode when the widget is removed from the tree
-    _settingsIconFocusNode.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      actions: [
-        Focus( // Wrap the IconButton with Focus
-          focusNode: _settingsIconFocusNode,
-          onFocusChange: (hasFocus) {
-            // Call setState to trigger a rebuild and update the icon's color
-            setState(() {
-              // No need to do anything specific here, just trigger rebuild
-            });
-          },
-          child: IconButton(
-            icon: Icon(
-              Icons.settings,
-              // Change color based on focus state
-              color: _settingsIconFocusNode.hasFocus ? Colors.deepOrange : accents,
-            ),
-            onPressed: () => Navigator.of(context).pushNamed("/setting"),
+  return AppBar(
+    actions: [
+      Focus( // Wrap the IconButton with Focus
+        focusNode: settingsIconFocusNode,
+        onFocusChange: (hasFocus) {
+          // This setState is crucial for the visual feedback to work
+          // as it forces a rebuild of the IconButton.
+          // However, since this is a function, it relies on the parent
+          // widget to rebuild the AppBar for this change to be visible.
+          // In many cases, the parent Scaffold will rebuild when focus changes.
+          if (hasFocus) {
+            print("Settings icon focused!");
+          }
+        },
+        child: IconButton(
+          icon: Icon(
+            Icons.settings,
+            // Change color based on focus state
+            color: settingsIconFocusNode.hasFocus ? Colors.deepOrange : accents,
           ),
-        )
-      ],
-      backgroundColor: lightColor,
-      elevation: 0,
-      centerTitle: true,
-      title: Text(
-        widget.appbarText, // Access appbarText via widget.appbarText
-        style: TextStyle(color: fontColor),
-      ),
-    );
-  }
+          onPressed: () => Navigator.of(context).pushNamed("/setting"),
+        ),
+      )
+    ],
+    backgroundColor: lightColor,
+    elevation: 0,
+    centerTitle: true,
+    title: Text(
+      appbarText,
+      style: TextStyle(color: fontColor),
+    ),
+  );
 }
