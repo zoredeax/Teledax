@@ -25,7 +25,7 @@ class _ChatIdsState extends State<ChatIds> {
 
     return Scaffold(
       backgroundColor: lightColor,
-      appBar: customAppbar("Select chat", context),
+      appBar: customAppbar("Select Chat", context),
       body: WillPopScope(child: chatIdList(), onWillPop: onWillPop),
     );
   }
