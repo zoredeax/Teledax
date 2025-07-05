@@ -37,7 +37,7 @@ class FileSearch extends SearchDelegate {
     return query.isEmpty
         ? Center(
             child: Text(
-              "No Data",
+              "No Data !!",
               style: TextStyle(color: fontColor, fontSize: 20),
             ),
           )
@@ -51,7 +51,7 @@ class FileSearch extends SearchDelegate {
                 if (items.length < 1) {
                   return Center(
                     child: Text(
-                      "Search Not Found",
+                      "No Search Results !!",
                       style: TextStyle(color: fontColor, fontSize: 20),
                     ),
                   );
@@ -78,7 +78,7 @@ class FileSearch extends SearchDelegate {
                         child: Image.asset("images/not-found.png"),
                       ),
                     ),
-                    Text("Something went wrong"),
+                    Text("Something went Wrong !!"),
                   ],
                 );
               }
@@ -91,10 +91,10 @@ class FileSearch extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     return Center(
         child: Text(
-      "No recent Search Found",
+      "No Recent Search Results !!",
       style: TextStyle(color: fontColor, fontSize: 20),
     ));
   }
 }
 
-final recentSearch = ["No Recent Data found"];
+final recentSearch = ["No Recent Data Found"];
