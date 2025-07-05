@@ -69,7 +69,7 @@ class _FIleInfoState extends State<FIleInfo> {
                       buildDivider(),
                       ListTile(
                         title: Text(
-                          "${DateFormat('hh:mm:a - dd-MM-yy').format(item.date)}",
+                          "${DateFormat('dd-MM-yy - hh:mm:a').format(item.date)}",
                           textAlign: TextAlign.center,
                           style: TextStyle(color: fontColor, fontSize: 15),
                         ),
