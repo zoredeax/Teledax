@@ -39,6 +39,7 @@ class _FIleInfoState extends State<FIleInfo> {
                 child: ListTile(
                   title: Text(
                     "${item.insight}",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: fontColor,
                         fontSize:
