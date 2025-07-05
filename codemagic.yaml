@@ -1,0 +1,27 @@
+workflows:
+  Teledax:
+    name: Teledax
+    instance_type: mac_mini_m2
+
+    environment:
+      flutter: 2.0.1
+      java: 11
+
+    triggering:
+      events:
+        - push
+
+    scripts:
+      - name: Get Flutter dependencies
+        script: |
+          flutter pub get
+
+      - name: Build Android App (Release, ARMv7 and ARMv8)
+        script: |
+          flutter build apk --release --target-platform android-arm --split-per-abi
+          flutter build apk --release --target-platform android-arm64 --split-per-abi
+
+    artifacts:
+      - build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+      - build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+      - /tmp/codemagic_logs/*.log
