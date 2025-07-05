@@ -42,7 +42,7 @@ class _SettingsState extends State<Settings> {
           elevation: 0,
           centerTitle: true,
           title: Text(
-            "settings",
+            "Settings",
             style: TextStyle(color: fontColor, fontWeight: FontWeight.bold),
           ),
         ),
@@ -71,7 +71,7 @@ class _SettingsState extends State<Settings> {
                 height: 18,
               ),
               Text(
-                "info",
+                "Info",
                 style: headerStyle,
               ),
               SizedBox(
@@ -96,7 +96,7 @@ class _SettingsState extends State<Settings> {
       child: Column(
         children: [
           ListTile(
-            title: Text("Audio play In background"),
+            title: Text("Play Audio In Background"),
             trailing: Switch(
               inactiveThumbColor: Colors.red,
               inactiveTrackColor: Colors.redAccent,
@@ -114,7 +114,7 @@ class _SettingsState extends State<Settings> {
           buildDivider(),
           // ++++  Video Play in background+++++++
           ListTile(
-            title: Text("Video play In Background"),
+            title: Text("Play Video In Background"),
             trailing: Switch(
               inactiveThumbColor: Colors.red,
               inactiveTrackColor: Colors.redAccent,
