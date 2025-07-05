@@ -24,7 +24,7 @@ class _FilesScreenState extends State<FilesScreen> {
     _paginationctr.addListener(() {
       if (_paginationctr.position.pixels ==
           _paginationctr.position.maxScrollExtent) {
-        print("fetch again");
+        print("Fetch Again !!");
         _getNext();
       }
     });
@@ -52,7 +52,7 @@ class _FilesScreenState extends State<FilesScreen> {
           centerTitle: true,
           elevation: 0,
           title: Text(
-            data['chat'] != null ? data['chat'].name : "loading",
+            data['chat'] != null ? data['chat'].name : "Loading...",
             style: TextStyle(
               color: fontColor,
               fontSize: 15,
@@ -96,7 +96,7 @@ class _FilesScreenState extends State<FilesScreen> {
 
   _getNext() async {
     if (!_isnext) {
-      print("No data!");
+      print("No Data!");
       return;
     }
     _isnext = false;
