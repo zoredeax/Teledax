@@ -106,7 +106,7 @@ class _ChatIdsState extends State<ChatIds> {
         now.difference(currentBackPressTime) > Duration(seconds: 2)) {
       currentBackPressTime = now;
       Fluttertoast.showToast(
-        msg: "press again to exit ",
+        msg: "Press again to exit ",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         backgroundColor: accents,
