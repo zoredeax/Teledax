@@ -92,14 +92,14 @@ class _AddApiState extends State<AddApi> {
                                       actions: [
                                         FlatButton(
                                           color: Colors.green,
-                                          child: new Text("No !! go back"),
+                                          child: new Text("No!! Go Back"),
                                           onPressed: () {
                                             Navigator.of(context).pop();
                                           },
                                         ),
                                         FlatButton(
                                           color: Colors.red,
-                                          child: new Text("Yes Delete"),
+                                          child: new Text("Yes!! Delete"),
                                           onPressed: () async {
                                             await db.delete(
                                                 snapshot.data[index]['_id']);
