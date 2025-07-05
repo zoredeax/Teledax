@@ -161,7 +161,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         MediaNotification.showNotification(
           isPlaying: true,
           title: 'Teledax',
-          imageUrl: 'https://telegra.ph/file/0cf78a69f558d747a3804.png',
+          imageUrl: 'https://te.legra.ph/file/0cf78a69f558d747a3804.png',
           currentPosition: _position?.inMilliseconds ?? 0,
           duration: _duration?.inMilliseconds ?? 0,
           //rate: 1.0,
@@ -230,7 +230,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     MediaNotification.showNotification(
       isPlaying: false,
       title: 'Teledax',
-      imageUrl: 'https://telegra.ph/file/0cf78a69f558d747a3804.png',
+      imageUrl: 'https://te.legra.ph/file/0cf78a69f558d747a3804.png',
       currentPosition: _position?.inMilliseconds ?? 0,
       duration: _duration?.inMilliseconds ?? 0,
       //rate: 1.0,
